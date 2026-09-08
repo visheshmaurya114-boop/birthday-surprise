@@ -1,0 +1,716 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top, #5b164f, #1a061d 70%);
+
+    color: white;
+
+    overflow-x: hidden;
+
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* CARD */
+
+.card {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.5);
+
+    animation: cardAppear 1.2s ease;
+
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(50px) scale(0.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+
+/* SMALL TEXT */
+
+.small-text {
+
+    color: #ffb8e8;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* HEADING */
+
+h1 {
+
+    font-size: clamp(30px, 7vw, 55px);
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+
+}
+
+
+h1 span {
+
+    color: #ff76c8;
+
+    text-shadow:
+        0 0 20px rgba(255, 100, 200, 0.8);
+
+}
+
+
+/* INTRO */
+
+.intro {
+
+    color: #ddd;
+
+    font-size: 18px;
+
+}
+
+
+/* CAKE */
+
+.cake-area {
+
+    height: 230px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.cake {
+
+    position: relative;
+
+    width: 190px;
+
+    height: 160px;
+
+    animation: cakeFloat 3s ease-in-out infinite;
+
+}
+
+
+@keyframes cakeFloat {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+}
+
+
+/* CAKE LAYERS */
+
+.cake-top {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 40px;
+
+    bottom: 110px;
+
+    background: #ff9bd3;
+
+    border-radius: 50%;
+
+}
+
+
+.cake-middle {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 70px;
+
+    bottom: 50px;
+
+    background: #ff62ae;
+
+    border-radius: 10px;
+
+}
+
+
+.cake-bottom {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 60px;
+
+    bottom: 10px;
+
+    background: #ff318d;
+
+    border-radius: 10px;
+
+}
+
+
+/* CANDLE */
+
+.candle {
+
+    position: absolute;
+
+    z-index: 5;
+
+    width: 20px;
+
+    height: 60px;
+
+    left: 85px;
+
+    bottom: 120px;
+
+    background: white;
+
+    border-radius: 5px;
+
+}
+
+
+/* FLAME */
+
+#flame {
+
+    position: absolute;
+
+    width: 22px;
+
+    height: 32px;
+
+    left: -1px;
+
+    top: -30px;
+
+    background: #ffd166;
+
+    border-radius: 50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+
+    animation: flameAnimation 0.6s infinite alternate;
+
+    transition: all 0.6s ease;
+
+}
+
+
+@keyframes flameAnimation {
+
+    from {
+
+        transform: rotate(-45deg) scale(1);
+
+    }
+
+    to {
+
+        transform: rotate(-45deg) scale(1.15);
+
+    }
+
+}
+
+
+/* FLAME OFF */
+
+#flame.blown {
+
+    opacity: 0;
+
+    transform:
+        rotate(-45deg)
+        scale(0);
+
+}
+
+
+/* BUTTON */
+
+#surpriseBtn {
+
+    border: none;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(45deg, #ff3194, #ff78c8);
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(255, 50, 150, 0.4);
+
+    transition: 0.3s ease;
+
+}
+
+
+#surpriseBtn:hover {
+
+    transform: translateY(-4px) scale(1.04);
+
+}
+
+
+#surpriseBtn:active {
+
+    transform: scale(0.96);
+
+}
+
+
+#surpriseBtn:disabled {
+
+    cursor: default;
+
+    opacity: 0.8;
+
+}
+
+
+/* SURPRISE CONTENT */
+
+#surpriseContent {
+
+    display: block;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-top: 0;
+
+    transition:
+        max-height 1.5s ease,
+        opacity 1s ease,
+        margin-top 1s ease;
+
+}
+
+
+/* OPEN */
+
+#surpriseContent.show {
+
+    max-height: 1000px;
+
+    opacity: 1;
+
+    margin-top: 40px;
+
+}
+
+
+/* PHOTO */
+
+.photo-container {
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+
+#herPhoto {
+
+    width: 230px;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 5px solid rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 40px rgba(255, 100, 200, 0.7);
+
+    opacity: 0;
+
+    transform: scale(0.3);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+}
+
+
+/* PHOTO SHOW */
+
+#herPhoto.show {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* MESSAGE */
+
+.message {
+
+    margin-top: 30px;
+
+}
+
+
+.message h2 {
+
+    min-height: 60px;
+
+    font-size: clamp(25px, 5vw, 38px);
+
+    color: #ff9bd7;
+
+    text-shadow:
+        0 0 20px rgba(255, 100, 200, 0.5);
+
+}
+
+
+/* EXTRA MESSAGE */
+
+#extraMessage {
+
+    margin-top: 20px;
+
+    color: #eee;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition: all 1s ease;
+
+}
+
+
+#extraMessage.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* HEART */
+
+#heart {
+
+    font-size: 60px;
+
+    margin-top: 20px;
+
+    opacity: 0;
+
+}
+
+
+#heart.show {
+
+    opacity: 1;
+
+    animation: heartbeat 1s infinite;
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.2);
+
+    }
+
+}
+
+
+/* FLOATING BACKGROUND */
+
+.background span {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    opacity: 0.5;
+
+    animation: floating 10s linear infinite;
+
+}
+
+
+.background span:nth-child(1) {
+
+    left: 10%;
+
+}
+
+
+.background span:nth-child(2) {
+
+    left: 25%;
+
+    animation-delay: 2s;
+
+}
+
+
+.background span:nth-child(3) {
+
+    left: 40%;
+
+    animation-delay: 4s;
+
+}
+
+
+.background span:nth-child(4) {
+
+    left: 55%;
+
+    animation-delay: 1s;
+
+}
+
+
+.background span:nth-child(5) {
+
+    left: 70%;
+
+    animation-delay: 3s;
+
+}
+
+
+.background span:nth-child(6) {
+
+    left: 82%;
+
+    animation-delay: 5s;
+
+}
+
+
+.background span:nth-child(7) {
+
+    left: 92%;
+
+    animation-delay: 7s;
+
+}
+
+
+@keyframes floating {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: 0.7;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* CONFETTI */
+
+#confetti {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .container {
+
+        padding: 15px;
+
+    }
+
+
+    .card {
+
+        padding: 35px 18px;
+
+        border-radius: 25px;
+
+    }
+
+
+    #herPhoto {
+
+        width: 190px;
+
+        height: 190px;
+
+    }
+
+
+    .cake {
+
+        transform: scale(0.85);
+
+    }
+
+
+    #surpriseBtn {
+
+        font-size: 15px;
+
+        padding: 15px 22px;
+
+    }
+
+}
